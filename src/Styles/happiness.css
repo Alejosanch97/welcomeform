@@ -1,0 +1,515 @@
+/* CREAR EDUCATIVO - SUPREME THEME 2026 
+   v3.0 FIXED: Proporciones de Títulos, Scroll Infalible y Emojis Centrados
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --primary: #6c5ce7;
+    --primary-soft: #f3f0ff;
+    --primary-light: #a29bfe;
+    --accent: #4834d4;
+    --success: #00b894;
+    --warning: #facd72;
+    --danger: #ff7675;
+    --dark: #2d3436;
+    --text-muted: #636e72;
+    --bg-main: linear-gradient(135deg, #f8faff 0%, #f1f2f6 100%);
+    --shadow-sm: 0 4px 6px rgba(0,0,0,0.04);
+    --shadow-md: 0 12px 35px rgba(108, 92, 231, 0.12);
+    --shadow-lg: 0 25px 60px rgba(0,0,0,0.15);
+    --radius-lg: 40px;
+    --radius-md: 24px;
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+body, .kids-app {
+    min-height: 100vh;
+    background: var(--bg-main);
+    font-family: 'Outfit', sans-serif;
+    margin: 0;
+    color: var(--dark);
+    overflow-x: hidden;
+}
+
+/* --- BOTÓN ADMIN --- */
+.admin-btn-top {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: white;
+    border: 1px solid rgba(108, 92, 231, 0.2);
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-weight: 600;
+    color: var(--primary);
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    z-index: 1000;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+/* --- LOGIN / WELCOME --- */
+.full-screen-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.step-container {
+    background: white;
+    padding: 3rem 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.8);
+    animation: fadeIn 0.5s ease-out;
+}
+
+.logo-pulse {
+    width: 120px;
+    height: auto;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+}
+
+h1.hero-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 10px 0;
+    letter-spacing: -1px;
+    line-height: 1.1;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+.kid-input-large {
+    width: 100%;
+    padding: 1.2rem;
+    border-radius: var(--radius-md);
+    border: 3px solid #f1f2f6;
+    font-size: 1.2rem;
+    background: #fcfcfc;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-family: inherit;
+    transition: 0.3s;
+}
+
+.kid-btn-giant {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 800;
+    border-radius: 100px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(108, 92, 231, 0.2);
+    width: 100%;
+    transition: 0.3s;
+}
+
+/* --- SURVEY LAYOUT (TITULO Y CARDS CORREGIDOS) --- */
+.survey-layout {
+    max-width: 850px; /* Un poco más ancho para equilibrio */
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.survey-sidebar h2 {
+    font-size: 3rem; /* Aumentado: Antes era muy pequeño respecto a la pregunta */
+    font-weight: 800;
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 2.5rem;
+    line-height: 1;
+    letter-spacing: -1.5px;
+}
+
+.question-card-modern {
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 1.8rem; /* Reducido para no verse gigante */
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-md);
+    border-left: 12px solid var(--primary); /* Borde más marcado */
+}
+
+.q-header p {
+    font-size: 1.3rem; /* Tamaño de pregunta equilibrado */
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+/* --- EMOJI RATING (ALINEACIÓN Y CENTRADO) --- */
+.emoji-rating-modern {
+    display: flex;
+    justify-content: center; /* Centrado para que no se pegue a la derecha */
+    background: #f1f5f9;
+    padding: 10px;
+    border-radius: 30px;
+    gap: 8px;
+    max-width: 500px; /* Evita que la zona de emojis crezca infinito */
+    margin: 0 auto;
+}
+
+.emoji-rating-modern button {
+    flex: 1;
+    font-size: 2.2rem;
+    background: transparent;
+    border: none;
+    padding: 10px 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.emoji-rating-modern button.active {
+    background: white;
+    transform: scale(1.15);
+    box-shadow: 0 8px 20px rgba(108, 92, 231, 0.2);
+}
+
+.v-label {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-top: 4px;
+}
+
+/* --- MODAL DASHBOARD (FIX SCROLL CRÍTICO) --- */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    padding: 20px;
+}
+
+.admin-dashboard {
+    background: #f1f5f9;
+    width: 100%;
+    max-width: 1000px;
+    height: 90vh; /* Altura fija para que el scroll funcione */
+    border-radius: 30px;
+    overflow: hidden; 
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-lg);
+}
+
+.dashboard-header {
+    background: white;
+    padding: 1.5rem 2.5rem;
+    border-bottom: 2px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.dashboard-grid {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem;
+    overflow-y: auto; /* SCROLL HABILITADO */
+    flex-grow: 1;
+    scrollbar-gutter: stable;
+}
+
+/* Scrollbar Moderno */
+.dashboard-grid::-webkit-scrollbar { width: 8px; }
+.dashboard-grid::-webkit-scrollbar-track { background: #f1f5f9; }
+.dashboard-grid::-webkit-scrollbar-thumb { 
+    background: #cbd5e1; 
+    border-radius: 10px;
+}
+
+/* --- CLAVE / AUTH BOX --- */
+.auth-box {
+    padding: 2.5rem;
+    text-align: center;
+    background: white;
+    border-radius: var(--radius-lg);
+    max-width: 400px; /* Más compacto */
+    width: 90%;
+}
+
+.emoji-grid-auth {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas queda más simétrico */
+    gap: 15px;
+    margin: 1.5rem 0;
+}
+
+.btn-auth {
+    font-size: 1.8rem;
+    padding: 10px;
+    border: 2px solid #f1f2f6;
+    border-radius: 18px;
+    background: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* --- CARDS DASHBOARD --- */
+.dashboard-section {
+    background: white;
+    padding: 1.8rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow-sm);
+}
+
+.ai-card { 
+    grid-column: span 12; 
+    border-left: 10px solid var(--primary); 
+    background: #fdfdff; 
+}
+.ai-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--dark);
+    font-weight: 400;
+}
+
+.stats-card { grid-column: span 5; }
+.open-answers-card { grid-column: span 7; }
+.alerts-card { grid-column: span 12; }
+
+/* --- OTROS ELEMENTOS --- */
+.ifg-circle {
+    border: 5px solid var(--primary);
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white;
+}
+
+.ifg-val { font-size: 1.8rem; font-weight: 800; color: var(--primary); }
+.ifg-lbl { font-size: 0.65rem; font-weight: 700; }
+
+.btn-close-dash {
+    margin: 1.5rem 2rem;
+    padding: 1.1rem;
+    border-radius: 100px;
+    background: var(--dark);
+    color: white;
+    font-weight: 800;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.status-tag {
+    display: inline-block;
+    padding: 6px 15px;
+    border-radius: 100px;
+    color: white;
+    font-weight: 700;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
+.quote-item {
+    background: #f8fafc;
+    padding: 1rem;
+    border-left: 4px solid var(--primary-light);
+    border-radius: 12px;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+.kid-text-area {
+    width: 100%;
+    min-height: 100px;
+    border: 2px solid #f1f2f6;
+    border-radius: 15px;
+    padding: 1rem;
+    font-family: inherit;
+    font-size: 1rem;
+    resize: none;
+}
+
+@media (max-width: 850px) {
+    .stats-card, .open-answers-card { grid-column: span 12; }
+    .survey-sidebar h2 { font-size: 2.2rem; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- RESPONSIVE ADAPTATION (iPads & Mobiles) --- */
+
+/* TABLETS (iPad Air/Pro, etc.) */
+@media (max-width: 1024px) {
+    .admin-dashboard {
+        width: 95%;
+        height: 85vh;
+    }
+    
+    .dashboard-header {
+        padding: 1rem 1.5rem;
+    }
+
+    .survey-layout {
+        max-width: 90%;
+    }
+}
+
+/* MOBILE L & TABLETS SMALL (768px - 850px) */
+@media (max-width: 850px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr; /* Una sola columna para todo el análisis */
+        padding: 1rem;
+    }
+
+    .stats-card, .open-answers-card, .ai-card, .alerts-card {
+        grid-column: span 12; /* Ocupan todo el ancho */
+    }
+
+    .survey-sidebar h2 {
+        font-size: 2.5rem;
+    }
+}
+
+/* MOBILE SMARTPHONES (iPhone, Android - Max 480px) */
+@media (max-width: 480px) {
+    /* Ajustes de Bienvenida */
+    h1.hero-title {
+        font-size: 1.8rem;
+    }
+    
+    .step-container {
+        padding: 2rem 1.5rem;
+        margin: 10px;
+    }
+
+    .logo-pulse {
+        width: 100px;
+    }
+
+    /* Ajustes de Encuesta */
+    .survey-layout {
+        padding: 40px 10px;
+    }
+
+    .survey-sidebar h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .question-card-modern {
+        padding: 1.2rem;
+        border-left-width: 8px;
+    }
+
+    .q-header p {
+        font-size: 1.1rem;
+    }
+
+    /* Ajuste crítico de Emojis para que no se salgan */
+    .emoji-rating-modern {
+        gap: 4px;
+        padding: 8px;
+    }
+
+    .emoji-rating-modern button {
+        font-size: 1.6rem; /* Emojis más pequeños en celular */
+        padding: 8px 2px;
+    }
+
+    .v-label {
+        font-size: 0.6rem;
+    }
+
+    /* Dashboard Admin en Celular */
+    .admin-dashboard {
+        height: 95vh; /* Casi toda la pantalla */
+        border-radius: 20px;
+    }
+
+    .dashboard-header {
+        flex-direction: column; /* Apilar título y círculo IFG */
+        text-align: center;
+        gap: 10px;
+        padding: 1rem;
+    }
+
+    .dashboard-header h1 {
+        font-size: 1.2rem;
+    }
+
+    .ifg-circle {
+        width: 70px;
+        height: 70px;
+    }
+
+    .ifg-val {
+        font-size: 1.4rem;
+    }
+
+    .emoji-grid-auth {
+        grid-template-columns: repeat(3, 1fr); /* 3 columnas en clave para dedos grandes */
+        gap: 10px;
+    }
+
+    .btn-auth {
+        font-size: 1.5rem;
+    }
+
+    .btn-close-dash {
+        margin: 10px;
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    /* Botón flotante Admin */
+    .admin-btn-top {
+        top: 10px;
+        right: 10px;
+        padding: 8px 15px;
+        font-size: 0.75rem;
+    }
+}
+
+/* Ajuste para pantallas muy pequeñas o en horizontal */
+@media (max-height: 600px) {
+    .admin-dashboard {
+        height: 100vh;
+        border-radius: 0;
+    }
+    
+    .step-container {
+        padding: 1rem;
+    }
+}
