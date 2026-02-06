@@ -125,14 +125,14 @@ export const Home = () => {
             {syncing && <div className="sync-top">🚀 Guardando misión secreta...</div>}
             
             <button className="admin-btn-top" onClick={() => { setShowAdmin(true); setShuffledEmojis(BASE_EMOJIS); }}>
-                📊 Panel de Control Profes
+                📊 Panel de Control Ia
             </button>
 
             {step === 0 && (
                 <div className="full-screen-container">
                     <div className="step-container">
                         <img src={SCHOOL_LOGO} className="logo-pulse" alt="Logo" />
-                        <h1 className="hero-title">¡Hola! Soy Crear</h1>
+                        <h1 className="hero-title">¡Hola! estudiantes Crear</h1>
                         <p className="hero-subtitle">Tu opinión nos ayuda a hacer el colegio más divertido</p>
                         <div className="input-group-kid">
                             <input 

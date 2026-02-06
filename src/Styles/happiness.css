@@ -1,5 +1,5 @@
 /* CREAR EDUCATIVO - SUPREME THEME 2026 
-   v3.0 FIXED: Proporciones de Títulos, Scroll Infalible y Emojis Centrados
+   v3.2 FIXED: Login Compacto vs Dashboard Extendido
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
@@ -125,15 +125,15 @@ h1.hero-title {
     transition: 0.3s;
 }
 
-/* --- SURVEY LAYOUT (TITULO Y CARDS CORREGIDOS) --- */
+/* --- SURVEY LAYOUT --- */
 .survey-layout {
-    max-width: 850px; /* Un poco más ancho para equilibrio */
+    max-width: 850px;
     margin: 0 auto;
     padding: 40px 20px;
 }
 
 .survey-sidebar h2 {
-    font-size: 3rem; /* Aumentado: Antes era muy pequeño respecto a la pregunta */
+    font-size: 3rem;
     font-weight: 800;
     color: var(--primary);
     text-align: center;
@@ -145,27 +145,27 @@ h1.hero-title {
 .question-card-modern {
     background: white;
     border-radius: var(--radius-md);
-    padding: 1.8rem; /* Reducido para no verse gigante */
+    padding: 1.8rem;
     margin-bottom: 1.5rem;
     box-shadow: var(--shadow-md);
-    border-left: 12px solid var(--primary); /* Borde más marcado */
+    border-left: 12px solid var(--primary);
 }
 
 .q-header p {
-    font-size: 1.3rem; /* Tamaño de pregunta equilibrado */
+    font-size: 1.3rem;
     font-weight: 700;
     margin-bottom: 1rem;
 }
 
-/* --- EMOJI RATING (ALINEACIÓN Y CENTRADO) --- */
+/* --- EMOJI RATING --- */
 .emoji-rating-modern {
     display: flex;
-    justify-content: center; /* Centrado para que no se pegue a la derecha */
+    justify-content: center;
     background: #f1f5f9;
     padding: 10px;
     border-radius: 30px;
     gap: 8px;
-    max-width: 500px; /* Evita que la zona de emojis crezca infinito */
+    max-width: 500px;
     margin: 0 auto;
 }
 
@@ -196,7 +196,7 @@ h1.hero-title {
     margin-top: 4px;
 }
 
-/* --- MODAL DASHBOARD (FIX SCROLL CRÍTICO) --- */
+/* --- MODAL DASHBOARD ESTRUCTURA --- */
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -209,16 +209,23 @@ h1.hero-title {
     padding: 20px;
 }
 
+/* El contenedor principal NO debe tener tamaño fijo si está en el login */
 .admin-dashboard {
     background: #f1f5f9;
-    width: 100%;
+    width: auto; /* IMPORTANTE: Cambiado a auto para el login */
     max-width: 1000px;
-    height: 90vh; /* Altura fija para que el scroll funcione */
     border-radius: 30px;
     overflow: hidden; 
     display: flex;
     flex-direction: column;
     box-shadow: var(--shadow-lg);
+    transition: all 0.5s ease;
+}
+
+/* Cuando ya estamos logueados, el dashboard crece */
+.admin-dashboard:has(.dashboard-header) {
+    width: 100%;
+    height: 90vh;
 }
 
 .dashboard-header {
@@ -236,44 +243,53 @@ h1.hero-title {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 1.5rem;
-    overflow-y: auto; /* SCROLL HABILITADO */
+    overflow-y: auto;
     flex-grow: 1;
-    scrollbar-gutter: stable;
 }
 
-/* Scrollbar Moderno */
-.dashboard-grid::-webkit-scrollbar { width: 8px; }
-.dashboard-grid::-webkit-scrollbar-track { background: #f1f5f9; }
-.dashboard-grid::-webkit-scrollbar-thumb { 
-    background: #cbd5e1; 
-    border-radius: 10px;
-}
-
-/* --- CLAVE / AUTH BOX --- */
+/* --- CLAVE / AUTH BOX (CORRECCIÓN LOGGIN PEQUEÑO) --- */
 .auth-box {
     padding: 2.5rem;
     text-align: center;
     background: white;
-    border-radius: var(--radius-lg);
-    max-width: 400px; /* Más compacto */
-    width: 90%;
+    width: 380px; /* Ancho fijo pequeño para el login */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.auth-box h2 {
+    color: var(--primary);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
 }
 
 .emoji-grid-auth {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columnas queda más simétrico */
-    gap: 15px;
-    margin: 1.5rem 0;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 1.5rem;
 }
 
 .btn-auth {
     font-size: 1.8rem;
-    padding: 10px;
+    aspect-ratio: 1/1;
     border: 2px solid #f1f2f6;
-    border-radius: 18px;
+    border-radius: 15px;
     background: white;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: 0.2s;
+}
+
+.btn-auth:hover {
+    background: var(--primary-soft);
+    border-color: var(--primary);
+    transform: translateY(-3px);
 }
 
 /* --- CARDS DASHBOARD --- */
@@ -284,17 +300,8 @@ h1.hero-title {
     box-shadow: var(--shadow-sm);
 }
 
-.ai-card { 
-    grid-column: span 12; 
-    border-left: 10px solid var(--primary); 
-    background: #fdfdff; 
-}
-.ai-text {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: var(--dark);
-    font-weight: 400;
-}
+.ai-card { grid-column: span 12; border-left: 10px solid var(--primary); background: #fdfdff; }
+.ai-text { font-size: 1.1rem; line-height: 1.6; color: var(--dark); }
 
 .stats-card { grid-column: span 5; }
 .open-answers-card { grid-column: span 7; }
@@ -317,15 +324,15 @@ h1.hero-title {
 .ifg-lbl { font-size: 0.65rem; font-weight: 700; }
 
 .btn-close-dash {
-    margin: 1.5rem 2rem;
-    padding: 1.1rem;
+    margin: 1.5rem;
+    padding: 0.8rem 2rem;
     border-radius: 100px;
     background: var(--dark);
     color: white;
-    font-weight: 800;
+    font-weight: 700;
     border: none;
     cursor: pointer;
-    flex-shrink: 0;
+    align-self: center;
 }
 
 .status-tag {
@@ -354,13 +361,14 @@ h1.hero-title {
     border-radius: 15px;
     padding: 1rem;
     font-family: inherit;
-    font-size: 1rem;
     resize: none;
 }
 
+/* --- RESPONSIVE --- */
 @media (max-width: 850px) {
+    .dashboard-grid { grid-template-columns: 1fr; }
     .stats-card, .open-answers-card { grid-column: span 12; }
-    .survey-sidebar h2 { font-size: 2.2rem; }
+    .auth-box { width: 320px; padding: 1.5rem; }
 }
 
 @keyframes fadeIn {
@@ -368,33 +376,18 @@ h1.hero-title {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* --- RESPONSIVE ADAPTATION (iPads & Mobiles) --- */
+/* --- RESPONSIVE OPTIMIZED (iPads & Mobiles) --- */
 
-/* TABLETS (iPad Air/Pro, etc.) */
+/* TABLETS (iPad Air, Pro, Mini) */
 @media (max-width: 1024px) {
-    .admin-dashboard {
+    .admin-dashboard:has(.dashboard-header) {
         width: 95%;
         height: 85vh;
-    }
-    
-    .dashboard-header {
-        padding: 1rem 1.5rem;
     }
 
     .survey-layout {
         max-width: 90%;
-    }
-}
-
-/* MOBILE L & TABLETS SMALL (768px - 850px) */
-@media (max-width: 850px) {
-    .dashboard-grid {
-        grid-template-columns: 1fr; /* Una sola columna para todo el análisis */
-        padding: 1rem;
-    }
-
-    .stats-card, .open-answers-card, .ai-card, .alerts-card {
-        grid-column: span 12; /* Ocupan todo el ancho */
+        padding: 20px;
     }
 
     .survey-sidebar h2 {
@@ -402,49 +395,64 @@ h1.hero-title {
     }
 }
 
-/* MOBILE SMARTPHONES (iPhone, Android - Max 480px) */
+/* MOBILE L & TABLETS SMALL (Vertical iPad / Samsung Tab) */
+@media (max-width: 850px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr; /* Una sola columna para evitar amontonamiento */
+        padding: 1.2rem;
+    }
+
+    .stats-card, .open-answers-card, .ai-card, .alerts-card {
+        grid-column: span 12;
+    }
+
+    .dashboard-header {
+        padding: 1.2rem;
+        flex-direction: column; /* Apila título e indicador IFG */
+        gap: 15px;
+        text-align: center;
+    }
+
+    .auth-box {
+        width: 90%; /* Se adapta al ancho del celular */
+        max-width: 360px;
+        padding: 2rem 1.2rem;
+    }
+}
+
+/* SMARTPHONES (iPhone, Android - Pantallas pequeñas) */
 @media (max-width: 480px) {
     /* Ajustes de Bienvenida */
     h1.hero-title {
         font-size: 1.8rem;
     }
-    
+
     .step-container {
-        padding: 2rem 1.5rem;
-        margin: 10px;
+        padding: 2rem 1.2rem;
     }
 
     .logo-pulse {
-        width: 100px;
+        width: 90px;
     }
 
-    /* Ajustes de Encuesta */
-    .survey-layout {
-        padding: 40px 10px;
-    }
-
-    .survey-sidebar h2 {
-        font-size: 2rem;
-        margin-bottom: 1.5rem;
-    }
-
+    /* Ajuste Crítico de Encuesta */
     .question-card-modern {
         padding: 1.2rem;
-        border-left-width: 8px;
+        border-left-width: 8px; /* Borde un poco más delgado para ganar espacio */
     }
 
     .q-header p {
         font-size: 1.1rem;
     }
 
-    /* Ajuste crítico de Emojis para que no se salgan */
+    /* Emojis de Encuesta (para que no se desborden) */
     .emoji-rating-modern {
         gap: 4px;
-        padding: 8px;
+        padding: 6px;
     }
 
     .emoji-rating-modern button {
-        font-size: 1.6rem; /* Emojis más pequeños en celular */
+        font-size: 1.6rem; 
         padding: 8px 2px;
     }
 
@@ -452,64 +460,50 @@ h1.hero-title {
         font-size: 0.6rem;
     }
 
-    /* Dashboard Admin en Celular */
-    .admin-dashboard {
-        height: 95vh; /* Casi toda la pantalla */
-        border-radius: 20px;
-    }
-
-    .dashboard-header {
-        flex-direction: column; /* Apilar título y círculo IFG */
-        text-align: center;
-        gap: 10px;
-        padding: 1rem;
-    }
-
-    .dashboard-header h1 {
-        font-size: 1.2rem;
-    }
-
-    .ifg-circle {
-        width: 70px;
-        height: 70px;
-    }
-
-    .ifg-val {
-        font-size: 1.4rem;
-    }
-
+    /* Clave de Docente (3 columnas para mejor tamaño de botón) */
     .emoji-grid-auth {
-        grid-template-columns: repeat(3, 1fr); /* 3 columnas en clave para dedos grandes */
-        gap: 10px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
     }
 
     .btn-auth {
         font-size: 1.5rem;
     }
 
-    .btn-close-dash {
-        margin: 10px;
-        padding: 0.8rem;
-        font-size: 0.9rem;
+    /* Dashboard Admin Mobile */
+    .admin-dashboard:has(.dashboard-header) {
+        width: 100%;
+        height: 100vh; /* Ocupa toda la pantalla en celular */
+        border-radius: 0; /* Sin bordes redondeados para aprovechar espacio */
     }
 
-    /* Botón flotante Admin */
-    .admin-btn-top {
-        top: 10px;
-        right: 10px;
-        padding: 8px 15px;
-        font-size: 0.75rem;
+    .ifg-circle {
+        width: 75px;
+        height: 75px;
+    }
+
+    .ifg-val {
+        font-size: 1.4rem;
+    }
+
+    .btn-close-dash {
+        width: 90%;
+        margin: 10px auto;
     }
 }
 
-/* Ajuste para pantallas muy pequeñas o en horizontal */
-@media (max-height: 600px) {
-    .admin-dashboard {
+/* Soporte para modo horizontal en móviles */
+@media (max-height: 500px) and (orientation: landscape) {
+    .admin-dashboard:has(.dashboard-header) {
         height: 100vh;
-        border-radius: 0;
     }
     
     .step-container {
         padding: 1rem;
+    }
+
+    .logo-pulse {
+        width: 60px;
+        margin-bottom: 0.5rem;
     }
 }
